@@ -4,8 +4,90 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+    .main{
+        display:flex;
+        flex-wrap:wrap;
+        gap: 2%;
+        
+    }
+    .box{
+        margin: 2%;
+        padding: 2%;
+        background-color: antiquewhite;
+        height: 400px;
+        width: 300px;
+        border-radius: 5%;
+    }
+    .box img{
+        width: 100%;
+    }
+    </style>
+    
 </head>
 <body>
-    
+    <div class="main">
+        <div class="box">
+            <img src="" alt="">
+            <p></p>
+            <b></b>
+            <span></span>
+        </div>
+        <div class="box">
+            <img src="" alt="">
+            <p></p>
+            <b></b>
+            <span></span>
+        </div>
+        <div class="box">
+            <img src="" alt="">
+            <p></p>
+            <b></b>
+            <span></span>
+        </div>
+        <div class="box">
+            <img src="" alt="">
+            <p></p>
+            <b></b>
+            <span></span>
+        </div>
+        <div class="box">
+            <img src="" alt="">
+            <p></p>
+            <b></b>
+            <span></span>
+        </div>
+        <div class="box">
+            <img src="" alt="">
+            <p></p>
+            <b></b>
+            <span></span>
+        </div>
+
+        <script>
+            
+            async function getData(){
+
+            let myResult = document.querySelectorAll(".box");
+
+            let responce = await fetch('https://dummyjson.com/products');
+            let data = await responce.json();
+            let myData = data.products
+            console.log(myData);
+
+            
+            myResult.forEach((element , i )=>{
+                element.getElementsByTagName('img')[0].src = data.products[i].images;
+                element.getElementsByTagName('p')[0].innerHTML = "Id No:" + (data.products[i].id);
+                element.getElementsByTagName('b')[0].innerHTML ="Price:" + (data.products[i].price)+"<br/>";
+                element.getElementsByTagName('span')[0].innerHTML ="Brand Name:" + data.products[i].brand;
+            })
+
+        
+            }
+            getData()
+        </script>
+
+    </div>
 </body>
 </html>
